@@ -1,11 +1,12 @@
-import React from 'react';
 import { Text, StyleSheet } from 'react-native';
+import React from 'react';
 
-const Result = ({ imc }) => {
+const ClassIMC = ({ classificacaoIMC }) => {
     return (
-        <Text style={styles.result}>Seu IMC é: {imc}</Text>
+        <Text style={styles.result}>Sua classificacão é: {classificacaoIMC}</Text>
     );
 };
+
 
 const styles = StyleSheet.create({
     result: {
@@ -15,5 +16,3 @@ const styles = StyleSheet.create({
         color: '#333',
     },
 });
-
-export default Result;

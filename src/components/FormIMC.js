@@ -19,31 +19,21 @@ const FormIMC = () => {
         const alturaMetros = parseFloat(altura) / 100;
         const imcCalculado = (parseFloat(peso) / (alturaMetros * alturaMetros)).toFixed(2);
         setImc(imcCalculado);
-
-    //Variável pra classificar o IMC
-        let classificacaoIMC;
     
     //Estrutura de condição para a classificação
         if (imcCalculado < 18.5) {
             setClassificacao('Abaixo do peso');
-        }
-        if (imcCalculado >= 18.5 && imcCalculado <= 24.9) {
+        }else if (imcCalculado >= 18.5 && imcCalculado <= 24.9) {
             setClassificacao('Peso normal');
-        }
-        if (imcCalculado >= 25 && imcCalculado <= 29.9) {
+        }else if (imcCalculado >= 25 && imcCalculado <= 29.9) {
             setClassificacao('Sobrepeso');
-        }
-        if (imcCalculado >= 30 && imcCalculado <= 34.9)  {
+        }else if (imcCalculado >= 30 && imcCalculado <= 34.9)  {
             setClassificacao('Obesidade grau 1');
-        }
-        if (imcCalculado >= 35 && imcCalculado <= 39.9) {
+        }else if (imcCalculado >= 35 && imcCalculado <= 39.9) {
             setClassificacao('Obesidade grau 2');
-        }
-        if (imcCalculado >= 40) {
+        }else if (imcCalculado >= 40) {
             setClassificacao('Obesidade grau 3 (obesidade mórbida)');
         }
-
-        console.log(classificacao)
 
         //Cálculo do peso ideal
         const pesomin = (18.5 * ((alturaMetros) * (alturaMetros))).toFixed(2);
@@ -71,9 +61,11 @@ const FormIMC = () => {
             />
             
             <Button title="Calcular IMC" onPress={calcularIMC} />
-            {imc && <Result imc={imc} />}
-            {classificacao && <ClassIMC classific={classificacao}/>}
-            {pmax && pmin && <PesoIdeal pesomin={pmin} pesomax={pmax}/>}
+                <View style={styles.formResult}>
+                    {imc && <Result imc={imc} />}
+                    {classificacao && <ClassIMC classific={classificacao}/>}
+                    {pmax && pmin && <PesoIdeal pesomin={pmin} pesomax={pmax}/>}
+                </View>
         </View>
         
     );
@@ -81,17 +73,23 @@ const FormIMC = () => {
 
 const styles = StyleSheet.create({
     formContainer: {
-        backgroundColor: '#f0f0f0',
+        backgroundColor: '#A9A9A9',
         padding: 16,
         borderRadius: 10,
     },
     input: {
         height: 40,
-        borderColor: 'gray',
+        backgroundColor: '#f0f0f0',
         borderWidth: 1,
         marginBottom: 12,
         paddingHorizontal: 8,
         borderRadius: 5,
+    },
+    formResult: {
+        backgroundColor: '#f0f0f0',
+        marginTop: 12,
+        paddingBottom: 14,
+        borderRadius: 10,
     },
 });
 

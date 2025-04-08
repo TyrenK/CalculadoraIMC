@@ -11,8 +11,9 @@ const styles = StyleSheet.create({
     result: {
         marginTop: 20,
         Fontsize: 24,
-        textAlign: 'center',
+        textAlign: 'left',
         color: '#333',
+        paddingLeft: 10,
     },
 });
 

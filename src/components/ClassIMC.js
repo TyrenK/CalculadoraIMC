@@ -1,10 +1,12 @@
-import { Text, StyleSheet } from 'react-native';
+import { Text, StyleSheet, View } from 'react-native';
 import React from 'react';
 
 //Função que exibe a classificação
 const ClassIMC = ({ classific }) => {
     return (
-        <Text style={styles.classimc}>Sua classificacão é: {classific}</Text>
+        <View style={styles.formResult}>
+            <Text style={styles.classimc}>Sua classificacão é: {classific}</Text>
+        </View>
     );
 };
 
@@ -13,8 +15,9 @@ const styles = StyleSheet.create({
     classimc: {
         marginTop: 20,
         Fontsize: 24,
-        textAlign: 'center',
+        textAlign: 'left',
         color: '#333',
+        paddingLeft: 10,
     },
 });
 

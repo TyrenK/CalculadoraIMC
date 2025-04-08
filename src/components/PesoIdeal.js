@@ -13,7 +13,7 @@ const PesoIdeal = ({ pesomin, pesomax }) => {
 const styles = StyleSheet.create({
     pesoideal: {
         marginTop: 20,
-        Fontsize: 24,
+        fontSize: 15,
         textAlign: 'left',
         color: '#333',
         paddingLeft: 10,

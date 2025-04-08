@@ -5,6 +5,7 @@ import ClassIMC from './ClassIMC';
 import PesoIdeal from './PesoIdeal';
 
 const FormIMC = () => {
+    // Estados para armazenar os dados do formulário e resultados
     const [peso, setPeso] = useState('');
     const [altura, setAltura] = useState('');
     const [imc, setImc] = useState(null);
@@ -12,65 +13,69 @@ const FormIMC = () => {
     const [pmax, setPmax] = useState('');
     const [pmin, setPmin] = useState('');
 
-
+    // Função que calcula o IMC, classifica e determina o peso ideal
     const calcularIMC = () => {
-        if (!peso || !altura) {return}
+        // Verifica se os campos foram preenchidos
+        if (!peso || !altura) { return }
 
+        // Converte altura de cm para metros e calcula o IMC
         const alturaMetros = parseFloat(altura) / 100;
         const imcCalculado = (parseFloat(peso) / (alturaMetros * alturaMetros)).toFixed(2);
         setImc(imcCalculado);
     
-    //Estrutura de condição para a classificação
+        // Classificação de acordo com o valor do IMC
         if (imcCalculado < 18.5) {
             setClassificacao('Abaixo do peso');
-        }else if (imcCalculado >= 18.5 && imcCalculado <= 24.9) {
+        } else if (imcCalculado >= 18.5 && imcCalculado <= 24.9) {
             setClassificacao('Peso normal');
-        }else if (imcCalculado >= 25 && imcCalculado <= 29.9) {
+        } else if (imcCalculado >= 25 && imcCalculado <= 29.9) {
             setClassificacao('Sobrepeso');
-        }else if (imcCalculado >= 30 && imcCalculado <= 34.9)  {
+        } else if (imcCalculado >= 30 && imcCalculado <= 34.9)  {
             setClassificacao('Obesidade grau 1');
-        }else if (imcCalculado >= 35 && imcCalculado <= 39.9) {
+        } else if (imcCalculado >= 35 && imcCalculado <= 39.9) {
             setClassificacao('Obesidade grau 2');
-        }else if (imcCalculado >= 40) {
+        } else if (imcCalculado >= 40) {
             setClassificacao('Obesidade grau 3 (obesidade mórbida)');
         }
 
-        //Cálculo do peso ideal
+        // Cálculo do intervalo de peso ideal
         const pesomin = (18.5 * ((alturaMetros) * (alturaMetros))).toFixed(2);
         setPmin(pesomin);
         const pesomax = (24.9 * ((alturaMetros) * (alturaMetros))).toFixed(2);
         setPmax(pesomax);
-    
     };
     
     return (
         <View style={styles.formContainer}>
+            {/* Campo de entrada para o peso */}
             <TextInput
-            style={styles.input}
-            placeholder="Peso (kg)"
-            keyboardType="numeric"
-            value={peso}
-            onChangeText={setPeso}
+                style={styles.input}
+                placeholder="Peso (kg)"
+                keyboardType="numeric"
+                value={peso}
+                onChangeText={setPeso}
             />
+            {/* Campo de entrada para a altura */}
             <TextInput
-            style={styles.input}
-            placeholder="Altura (cm)"
-            keyboardType="numeric"
-            value={altura}
-            onChangeText={setAltura}
+                style={styles.input}
+                placeholder="Altura (cm)"
+                keyboardType="numeric"
+                value={altura}
+                onChangeText={setAltura}
             />
-            
-            <Button title="Calcular IMC" onPress={calcularIMC} />
-                <View style={styles.formResult}>
-                    {imc && <Result imc={imc} />}
-                    {classificacao && <ClassIMC classific={classificacao}/>}
-                    {pmax && pmin && <PesoIdeal pesomin={pmin} pesomax={pmax}/>}
-                </View>
-        </View>
         
+            <Button title="Calcular IMC" color = "#20489f" onPress={calcularIMC} />
+            {/* Exibição dos resultados */}
+            <View style={styles.formResult}>
+                {imc && <Result imc={imc} />}
+                {classificacao && <ClassIMC classific={classificacao} />}
+                {pmax && pmin && <PesoIdeal pesomin={pmin} pesomax={pmax} />}
+            </View>
+        </View>
     );
 };
 
+// Estilização dos componentes
 const styles = StyleSheet.create({
     formContainer: {
         backgroundColor: '#A9A9A9',

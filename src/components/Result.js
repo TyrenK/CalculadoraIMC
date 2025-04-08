@@ -10,7 +10,7 @@ const Result = ({ imc }) => {
 const styles = StyleSheet.create({
     result: {
         marginTop: 20,
-        Fontsize: 24,
+        fontSize: 15,
         textAlign: 'left',
         color: '#333',
         paddingLeft: 10,

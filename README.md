@@ -8,10 +8,10 @@
 
 - Para baixar o repositório, utilize o comando:
 
-      git clone https://github.com/FelipeDinnouti/PAM_Atv1_CalculadoraIMC.git
+      git clone https://github.com/TyrenK/PAM--Ativ-CalculadoraIMC.git
 - Entre no diretório do repositório
   
-      cd PAM_Atv2_CalculadoraIMC
+      cd PAM_Atv_CalculadoraIMC
 
 - Baixe as dependências:
 
